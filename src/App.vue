@@ -1,14 +1,12 @@
-<script setup lang="ts">
-import coutdown from './components/coutdown.vue'
-import Navbar from './components/navbar.vue'
+<script setup>
+import CountdownComp from "./components/CountdownComp.vue";
 </script>
 
 <template>
-  <body>
-    <Navbar />
-
-    <coutdown targetDate="2025-10-26T02:00:00" />
-  </body>
+  <div>
+    <CountdownComp />
+    <h1 class="text-3xl">Hello world</h1>
+  </div>
 </template>
 
 <style scoped></style>

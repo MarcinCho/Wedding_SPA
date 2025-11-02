@@ -1,41 +1,32 @@
 <template>
   <!-- Main container - no styling -->
   <div>
-    <div>
-      <h1>Odliczanie do Ślubu Oli i Marcina</h1>
+    <div class="flex flex-col items-center justify-center">
+      <p class="font-cinzel md:text-4xl text-2xl md:mb-4">Ślub</p>
+      <p class="font-amsterdam text-2xl md:text-8xl p-2 md:p-8">
+        Oli i Marcina
+      </p>
 
-      <div v-if="!isFinished">
+      <div v-if="!isFinished" id="timer">
         <!-- Time units container -->
-        <div>
-          <!-- Days -->
-          <div>
-            <span>{{ days.toString().padStart(2, "0") }}</span>
-          </div>
-          <span>Days</span>
-        </div>
 
-        <!-- Hours -->
-        <div>
-          <div>
-            <span>{{ hours.toString().padStart(2, "0") }}</span>
-          </div>
-          <span>Hours</span>
+        <div class="time-box">
+          <span id="days" class="time-value">{{
+            days.toString().padStart(2, "0")
+          }}</span>
+          <span class="time-label">Dni</span>
         </div>
-
-        <!-- Minutes -->
-        <div>
-          <div>
-            <span>{{ minutes.toString().padStart(2, "0") }}</span>
-          </div>
-          <span>Minutes</span>
+        <div class="time-box">
+          <span id="hours" class="time-value">{{
+            hours.toString().padStart(2, "0")
+          }}</span>
+          <span class="time-label">Godziny</span>
         </div>
-
-        <!-- Seconds -->
-        <div>
-          <div>
-            <span>{{ seconds.toString().padStart(2, "0") }}</span>
-          </div>
-          <span>Seconds</span>
+        <div class="time-box">
+          <span id="minutes" class="time-value">{{
+            minutes.toString().padStart(2, "0")
+          }}</span>
+          <span class="time-label">Minuty</span>
         </div>
       </div>
 
@@ -111,5 +102,42 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#timer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between boxes */
+  margin-top: 30px;
+}
+/* The large number (e.g., "05") */
+.time-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #3f0e34; /* A splash of color */
+  line-height: 1.2;
+}
+
+/* The label (e.g., "Days") */
+.time-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #303030;
+  margin-top: 5px;
+}
+
+.time-box span {
+  display: block;
+}
+
+.time-box {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  min-width: 100px;
+}
+</style>
 
 <!-- The <style scoped> block was removed -->

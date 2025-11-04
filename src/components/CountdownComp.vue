@@ -2,12 +2,13 @@
   <!-- Main container - no styling -->
   <div>
     <div class="flex flex-col items-center justify-center text-center">
-      <p class="font-amsterdam text-5xl md:text-8xl p-2 md:p-8">Ola i Marcin</p>
-      <p class="font-cinzel md:text-4xl text-2xl pt-6 md:mb-4">
-        Zapraszją na swój ślub
+      <p
+        class="font-amsterdam text-5xl pb-5bg-gray-100 p-6 rounded-lg shadow-md"
+      >
+        Ola i Marcin
       </p>
-
-      <p class="font-cinzel md:text-4xl text-xl md:mb-4 text-center">
+      <p class="font-cinzel text-2xl pt-6">Zapraszją na swój ślub</p>
+      <p class="font-cinzel text-xl md:mb-4 text-center">
         Który Odbędzie się za
       </p>
 
@@ -36,8 +37,6 @@
 </template>
 
 <script>
-// NOTE: The import for 'backgroundImageUrl' has been removed as it is no longer used for styling.
-
 export default {
   // Component Name
   name: "Countdown",
@@ -108,8 +107,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px; /* Space between boxes */
-  margin-top: 10px;
+  margin-top: 5px;
 }
 /* The large number (e.g., "05") */
 .time-value {
@@ -135,7 +133,7 @@ export default {
 .time-box {
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(200, 129, 224, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 </style>
 

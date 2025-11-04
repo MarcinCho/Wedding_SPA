@@ -13,7 +13,10 @@
       Data: 12 Września 2026, 16:00<br />
       Miejsce: Andrychów, Polska
     </p>
-    <img src="../assets/img/test.jpg" alt="" />
+    <img
+      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExejN6czU4eDltMGIwaTl5NWVmYmp5MW00bGgwYjRoenBmcWsyanl3YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/x9o61VepcIju05fRju/giphy.gif"
+      alt=""
+    />
   </div>
 </template>
 

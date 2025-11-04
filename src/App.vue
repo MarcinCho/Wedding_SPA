@@ -5,6 +5,7 @@ import CountdownComp from "./components/CountdownComp.vue";
 <template>
   <div>
     <CountdownComp />
+    <BasicInfo />
   </div>
 </template>
 

@@ -1,10 +1,14 @@
 <template>
   <!-- Main container - no styling -->
   <div>
-    <div class="flex flex-col items-center justify-center">
-      <p class="font-cinzel md:text-4xl text-2xl md:mb-4">Ślub</p>
-      <p class="font-amsterdam text-2xl md:text-8xl p-2 md:p-8">
-        Oli i Marcina
+    <div class="flex flex-col items-center justify-center text-center">
+      <p class="font-amsterdam text-5xl md:text-8xl p-2 md:p-8">Ola i Marcin</p>
+      <p class="font-cinzel md:text-4xl text-2xl pt-6 md:mb-4">
+        Zapraszją na swój ślub
+      </p>
+
+      <p class="font-cinzel md:text-4xl text-xl md:mb-4 text-center">
+        Który Odbędzie się za
       </p>
 
       <div v-if="!isFinished" id="timer">
@@ -13,20 +17,16 @@
         <div class="time-box">
           <span id="days" class="time-value">{{
             days.toString().padStart(2, "0")
-          }}</span>
-          <span class="time-label">Dni</span>
-        </div>
-        <div class="time-box">
+          }}</span
+          ><span class="time-label">Dni</span>
           <span id="hours" class="time-value">{{
             hours.toString().padStart(2, "0")
           }}</span>
-          <span class="time-label">Godziny</span>
-        </div>
-        <div class="time-box">
+          <span class="time-label">godz.</span>
           <span id="minutes" class="time-value">{{
             minutes.toString().padStart(2, "0")
           }}</span>
-          <span class="time-label">Minuty</span>
+          <span class="time-label">Min.</span>
         </div>
       </div>
 
@@ -109,13 +109,13 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px; /* Space between boxes */
-  margin-top: 30px;
+  margin-top: 10px;
 }
 /* The large number (e.g., "05") */
 .time-value {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #3f0e34; /* A splash of color */
+  color: #140712; /* A splash of color */
   line-height: 1.2;
 }
 
@@ -124,19 +124,18 @@ export default {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #303030;
+  color: #121111;
   margin-top: 5px;
 }
 
-.time-box span {
+/* .time-box span {
   display: block;
-}
+} */
 
 .time-box {
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  min-width: 100px;
+  box-shadow: 0 2px 5px rgba(200, 129, 224, 0.3);
 }
 </style>
 

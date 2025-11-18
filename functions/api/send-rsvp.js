@@ -2,6 +2,7 @@
 // Ścieżka: /api/send-rsvp
 
 export async function onRequestPost({ request, env }) {
+  console.log("worker test");
   try {
     // 1. Walidacja metody i pobranie danych
     if (request.headers.get("content-type") !== "application/json") {

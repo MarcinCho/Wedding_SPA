@@ -2,6 +2,10 @@
   <!-- Main container - no styling -->
   <div>
     <div class="flex flex-col items-center justify-center text-center">
+      <h2 class="font-cinzel text-2xl mb-3">
+        Kochani!<br />
+        Mamy dla Was najważniejszą informację tego roku! ❤️
+      </h2>
       <p
         class="font-amsterdam text-5xl pb-5bg-gray-100 p-6 rounded-lg shadow-md"
       >

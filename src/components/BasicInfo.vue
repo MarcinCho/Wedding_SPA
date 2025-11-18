@@ -37,13 +37,6 @@
       >
       <p></p>
     </div>
-
-    <p>
-      <img
-        src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExejN6czU4eDltMGIwaTl5NWVmYmp5MW00bGgwYjRoenBmcWsyanl3YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/x9o61VepcIju05fRju/giphy.gif"
-        alt=""
-      />
-    </p>
   </div>
 </template>
 

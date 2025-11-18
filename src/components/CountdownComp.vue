@@ -1,9 +1,8 @@
 <template>
-  <!-- Main container - no styling -->
   <div>
     <div class="flex flex-col items-center justify-center text-center">
+      <h2 class="font-cinzel text-3xl">Kochani!</h2>
       <h2 class="font-cinzel text-2xl mb-3">
-        Kochani!<br />
         Mamy dla Was najważniejszą informację tego roku! ❤️
       </h2>
       <p

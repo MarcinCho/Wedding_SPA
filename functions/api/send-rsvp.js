@@ -28,11 +28,20 @@ export async function onRequestPost({ request, env }) {
     const RESEND_API_KEY = env.RESEND_API_KEY; // Pobieranie klucza z Cloudflare Secrets
 
     if (!RESEND_API_KEY) {
+      // Zmieniamy komunikat błędu, by wiedzieć, czy to jest problem
       return new Response(
         JSON.stringify({
-          error: "Server configuration error: Resend API Key is missing.",
+          error: "CONFIG_ERROR: RESEND_API_KEY is missing in env.",
         }),
-        { status: 500 }
+        { status: 500, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Sprawdź, czy reszta kodu działa poprawnie, wstawiając inny test
+    if (name === "TEST_KEY") {
+      return new Response(
+        JSON.stringify({ message: "Success! Key check passed." }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
       );
     }
 

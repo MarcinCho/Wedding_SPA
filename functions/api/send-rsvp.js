@@ -4,6 +4,7 @@
 export async function onRequestPost({ request, env }) {
   console.log("Received RSVP request");
 
+  console.log("worker test");
   try {
     // 1. Walidacja metody i pobranie danych
     if (request.headers.get("content-type") !== "application/json") {

@@ -1,105 +1,67 @@
-// Cloudflare Pages Function (Worker)
-// Ścieżka: /api/send-rsvp
+// Plik: functions/api/send-rsvp.js
 
 export async function onRequestPost({ request, env }) {
-  console.log("Received RSVP request");
-
-  console.log("worker test");
   try {
-    // 1. Walidacja metody i pobranie danych
-    if (request.headers.get("content-type") !== "application/json") {
-      return new Response(JSON.stringify({ error: "Expected JSON" }), {
-        status: 400,
-      });
-    }
-
-    const data = await request.json();
-
-    const { name, guestCount, comment } = data;
-
-    // Prosta walidacja
-    if (!name || typeof guestCount !== "number" || guestCount < 1) {
-      return new Response(
-        JSON.stringify({
-          error: "Missing or invalid data: name or guestCount is required.",
-        }),
-        { status: 400 }
+    // 1. Sprawdź czy klucz API istnieje
+    if (!env.RESEND_API_KEY) {
+      console.error(
+        "BŁĄD: Brak klucza RESEND_API_KEY w zmiennych środowiskowych."
       );
-    }
-
-    // 2. Użycie Resend
-    const RESEND_API_KEY = env.RESEND_API_KEY; // Pobieranie klucza z Cloudflare Secrets
-
-    if (!RESEND_API_KEY) {
-      // Zmieniamy komunikat błędu, by wiedzieć, czy to jest problem
       return new Response(
         JSON.stringify({
-          error: "CONFIG_ERROR: RESEND_API_KEY is missing in env.",
+          error: "Server configuration error: Missing API Key",
         }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
 
-    // Sprawdź, czy reszta kodu działa poprawnie, wstawiając inny test
-    if (name === "TEST_KEY") {
-      return new Response(
-        JSON.stringify({ message: "Success! Key check passed." }),
-        { status: 200, headers: { "Content-Type": "application/json" } }
-      );
+    // 2. Pobierz dane z formularza
+    const { name, guestCount, comment } = await request.json();
+
+    if (!name) {
+      return new Response(JSON.stringify({ error: "Name is required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
-    // Dane do wysłania
-    const emailData = {
-      // ZMIEŃ ADRESY E-MAIL PONIŻEJ!
-      from: "onboarding@resend.dev", // Musi być zweryfikowany w Resend, dla testów użyj "onboarding@resend.dev"
-      to: "chow.marcin@gmail.com", // Adres e-mail, na który ma przyjść powiadomienie (np. Panny Młodej)
-      subject: `🎉 NOWE POTWIERDZENIE RSVP od ${name}`,
-      html: `
-                <h2>Potwierdzenie Przybycia na Wesele</h2>
-                <hr>
-                <p><strong>Imię i Nazwisko Gościa/Gości:</strong> ${name}</p>
-                <p><strong>Liczba Potwierdzanych Osób:</strong> ${guestCount}</p>
-                <p><strong>Komentarz / Uwagi:</strong></p>
-                <p style="border-left: 3px solid #ccc; padding-left: 10px;">${
-                  comment || "Brak komentarza."
-                }</p>
-                <hr>
-                <p>Wysłano przez formularz RSVP.</p>
-            `,
-    };
-
+    // 3. Wyślij do Resend
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
       },
-      body: JSON.stringify(emailData),
+      body: JSON.stringify({
+        from: "onboarding@resend.dev", // Zmień to dopiero jak zweryfikujesz domenę!
+        to: "marcin.chowaniec@outlook.com", // <--- WPISZ TU SWÓJ E-MAIL!
+        subject: `Wesele RSVP: ${name}`,
+        html: `<p><strong>Gość:</strong> ${name}</p><p><strong>Liczba osób:</strong> ${guestCount}</p><p><strong>Komentarz:</strong> ${comment}</p>`,
+      }),
     });
 
-    const resendResult = await resendResponse.json();
+    const data = await resendResponse.json();
 
-    if (resendResponse.ok) {
-      console.log("Resend success:", resendResult);
+    if (!resendResponse.ok) {
+      console.error("BŁĄD RESEND:", data); // To pojawi się w logach Cloudflare
       return new Response(
         JSON.stringify({
-          message: "RSVP confirmed and email sent!",
-          id: resendResult.id,
+          error: "Email provider error",
+          details: data,
         }),
-        { status: 200 }
-      );
-    } else {
-      console.error("Resend error:", resendResult);
-      // Zwracamy ogólny błąd do front-endu, logujemy szczegóły na serwerze
-      return new Response(
-        JSON.stringify({ error: "Failed to send email via Resend." }),
-        { status: 500 }
+        { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
-  } catch (error) {
-    console.error("Global Worker Error:", error);
-    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    console.error("CRITICAL ERROR:", err.message);
+    return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
+      headers: { "Content-Type": "application/json" },
     });
   }
 }

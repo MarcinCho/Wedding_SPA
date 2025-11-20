@@ -4,7 +4,7 @@
   >
     <h2>Potwierdzenie Przybycia (RSVP) 🥂</h2>
     <form @submit.prevent="submitRSVP" class="rsvp-form">
-      <div class="bg-linear-75 from-purple-100 to-pink-200">
+      <div class="form-group">
         <label for="name">Imię i Nazwisko Gościa/Gości:</label>
         <input
           id="name"
@@ -15,7 +15,7 @@
         />
       </div>
 
-      <div class="bg-linear-45 from-pink-100 to-purple-200">
+      <div class="form-group">
         <label for="guests"
           >Liczba potwierdzanych gości (łącznie z Tobą):</label
         >
@@ -48,13 +48,6 @@
       {{ message }}
     </p>
   </div>
-  <p>
-    <img
-      class="text-center items-center justify-center align-middle"
-      src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXRiM21lNmRqYXc2YzlqdzVyNGN3MTBpMGNiaXIwbDhjNGExaHE2ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7a2pKfKSY0tVgRMpPK/giphy.gif"
-      alt=""
-    />
-  </p>
 </template>
 
 <script setup>
@@ -120,7 +113,6 @@ const submitRSVP = async () => {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #f9f9f9;
   font-family: Arial, sans-serif;
 }
 .rsvp-form {
@@ -141,7 +133,7 @@ const submitRSVP = async () => {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: pink-200;
+  background-color: #dbb5d679;
 }
 button {
   padding: 10px;

@@ -1,10 +1,12 @@
 <script setup>
 import CountdownComp from "./components/CountdownComp.vue";
+import ImageUploader from "./components/ImageUploader.vue";
 </script>
 
 <template>
   <div class="text-center items-center justify-center align-middle" v-if="true">
     <CountdownComp />
+    <ImageUploader />
     <BasicInfo />
     <RSVPForm />
     <p class="flex justify-center p-5">

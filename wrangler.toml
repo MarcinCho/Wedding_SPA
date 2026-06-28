@@ -1,0 +1,12 @@
+name = "slub"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "dist"
+
+# Bucket R2 na zdjęcia/filmy gości.
+# Binding SLUB_BUCKET -> bucket "slub-dev" (istnieje już na koncie).
+[[r2_buckets]]
+binding = "SLUB_BUCKET"
+bucket_name = "slub-dev"
+
+# UWAGA: żadnych sekretów w tym pliku. Tokeny/credentiale ustawiane są jako
+# Wrangler secrets lub zmienne środowiskowe w panelu Cloudflare Pages.

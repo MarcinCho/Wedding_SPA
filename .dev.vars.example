@@ -1,0 +1,8 @@
+# Przykład pliku .dev.vars do lokalnego dev z Wrangler (skopiuj jako .dev.vars).
+# Plik .dev.vars jest w .gitignore i NIE trafia do repo.
+#
+# Dla tej aplikacji NIE są wymagane żadne sekrety w .dev.vars —
+# dostęp do R2 zapewnia binding [[r2_buckets]] w wrangler.toml.
+#
+# Jeśli w przyszłości dodasz integracje wymagające tokenów, trzymaj je tutaj
+# lokalnie, a w produkcji ustaw przez:  npx wrangler pages secret put NAZWA

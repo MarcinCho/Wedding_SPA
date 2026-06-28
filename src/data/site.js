@@ -63,7 +63,7 @@ export const dressCode = {
     { name: "Fuksjowy", color: "#e72295" },
     { name: "Butelkowa zieleń", color: "#134e36" }
   ],
-  note: "Panie prosimy o unikanie bieli oraz pudrowego różu. Sugerujemy wybór kreacji w odcieniach śliwki, bordo, butelkowej zieleni lub pasujących do nich kolorach ziemi i złota z naszej palety.",
+  note: "Panie prosimy o unikanie bieli oraz pudrowego różu.",
 };
 // Zakładka „O nas” — w starej wersji była „in progress”, więc placeholder.
 export const about = {

@@ -58,16 +58,13 @@ export const locations = [
 
 export const dressCode = {
   title: "Dress code",
-  // Brak w starej wersji — uzupełnij (np. „elegancki / formalny”).
-  text: "[DO_WYPEŁNIENIA: np. elegancki / formalny]",
+  text: "Elegancki / formalny",
   palette: [
-    { name: "Pudrowy róż", color: "#fbcfe8" },
-    { name: "Lila", color: "#dbb5d6" },
-    { name: "Śliwka", color: "#9d174d" },
+    { name: "Fuksjowy", color: "#e72295" },
+    { name: "Butelkowa zieleń", color: "#134e36" }
   ],
-  note: "Panie prosimy o unikanie bieli. Sugerujemy odcienie z naszej palety.",
+  note: "Panie prosimy o unikanie bieli oraz pudrowego różu. Sugerujemy wybór kreacji w odcieniach śliwki, bordo, butelkowej zieleni lub pasujących do nich kolorach ziemi i złota z naszej palety.",
 };
-
 // Zakładka „O nas” — w starej wersji była „in progress”, więc placeholder.
 export const about = {
   heading: "Nasza historia",

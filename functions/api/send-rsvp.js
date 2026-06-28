@@ -1,67 +1,84 @@
-// Plik: functions/api/send-rsvp.js
+import { writeCors, json } from "../_shared/http.js";
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
+  );
+}
+function clean(s, max) {
+  return String(s == null ? "" : s)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, " ")
+    .trim()
+    .slice(0, max);
+}
 
 export async function onRequestPost({ request, env }) {
+  const cors = writeCors(env, request);
+
+  let body;
   try {
-    // 1. Sprawdź czy klucz API istnieje
-    if (!env.RESEND_API_KEY) {
-      console.error(
-        "BŁĄD: Brak klucza RESEND_API_KEY w zmiennych środowiskowych."
-      );
-      return new Response(
-        JSON.stringify({
-          error: "Server configuration error: Missing API Key",
-        }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
-    }
+    body = await request.json();
+  } catch (e) {
+    return json({ error: "Nieprawidłowe żądanie." }, 400, cors);
+  }
 
-    // 2. Pobierz dane z formularza
-    const { name, guestCount, comment } = await request.json();
+  // Honeypot — boty wypełniają ukryte pole; udajemy sukces, nic nie wysyłamy.
+  if (body.website) {
+    return json({ success: true }, 200, cors);
+  }
 
-    if (!name) {
-      return new Response(JSON.stringify({ error: "Name is required" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+  const name = clean(body.name, 120);
+  if (!name) {
+    return json({ error: "Imię i nazwisko jest wymagane." }, 400, cors);
+  }
+  let guestCount = parseInt(body.guestCount, 10);
+  if (!Number.isFinite(guestCount) || guestCount < 1) guestCount = 1;
+  if (guestCount > 50) guestCount = 50;
+  const attending =
+    String(body.attending) === "Nie" ? "Nie będę" : "Będę";
+  const comment = clean(body.comment, 1000);
 
-    // 3. Wyślij do Resend
-    const resendResponse = await fetch("https://api.resend.com/emails", {
+  if (!env.RESEND_API_KEY) {
+    return json({ error: "Błąd konfiguracji serwera (brak klucza e-mail)." }, 500, cors);
+  }
+
+  const from = env.RESEND_FROM || "onboarding@resend.dev";
+  const to = env.RSVP_TO || "marcin.chowaniec@outlook.com";
+
+  const html = `
+    <h2 style="font-family:Georgia,serif;color:#be185d;">Nowe potwierdzenie (RSVP)</h2>
+    <p><strong>Gość / Goście:</strong> ${esc(name)}</p>
+    <p><strong>Obecność:</strong> ${esc(attending)}</p>
+    <p><strong>Liczba osób:</strong> ${esc(guestCount)}</p>
+    <p><strong>Komentarz:</strong> ${esc(comment) || "—"}</p>
+  `;
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "onboarding@resend.dev", // Zmień to dopiero jak zweryfikujesz domenę!
-        to: "marcin.chowaniec@outlook.com", // <--- WPISZ TU SWÓJ E-MAIL!
-        subject: `Wesele RSVP: ${name}`,
-        html: `<p><strong>Gość:</strong> ${name}</p><p><strong>Liczba osób:</strong> ${guestCount}</p><p><strong>Komentarz:</strong> ${comment}</p>`,
+        from,
+        to,
+        reply_to: env.RSVP_TO || undefined,
+        subject: `Wesele RSVP: ${name} (${attending}, ${guestCount} os.)`,
+        html,
       }),
     });
-
-    const data = await resendResponse.json();
-
-    if (!resendResponse.ok) {
-      console.error("BŁĄD RESEND:", data); // To pojawi się w logach Cloudflare
-      return new Response(
-        JSON.stringify({
-          error: "Email provider error",
-          details: data,
-        }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+    const data = await res.json();
+    if (!res.ok) {
+      return json({ error: "Nie udało się wysłać potwierdzenia." }, 502, cors);
     }
-
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (err) {
-    console.error("CRITICAL ERROR:", err.message);
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return json({ success: true }, 200, cors);
+  } catch (e) {
+    return json({ error: "Błąd sieci. Spróbuj ponownie." }, 502, cors);
   }
+}
+
+export function onRequestOptions({ request, env }) {
+  return new Response(null, { headers: writeCors(env, request) });
 }

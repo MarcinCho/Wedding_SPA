@@ -1,16 +1,92 @@
+/* ============================================================
+   Ola i Marcin — global styles
+   Paleta wyodrębniona 1:1 ze starego projektu (patrz DESIGN_TOKENS.md)
+   ============================================================ */
+
 @font-face {
-  font-family: Cinzel;
-  src: url("src/assets/fonts/Cinzel.ttf");
+  font-family: "Cinzel";
+  src: url("./assets/fonts/Cinzel.ttf") format("truetype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Amsterdam";
-  src: url("assets/fonts/Amsterdam.ttf");
+  src: url("./assets/fonts/Amsterdam.ttf") format("truetype");
+  font-display: swap;
 }
 
 @import "tailwindcss";
 
 @theme {
+  /* Fonty marki (zachowane ze starego projektu) */
   --font-cinzel: "Cinzel", serif;
-  --font-amsterdam: "Amsterdam";
+  --font-amsterdam: "Amsterdam", cursive;
+
+  /* --- Paleta marki (dokładne wartości HEX z oryginału) --- */
+  /* Tło: gradient purple-100 -> pink-100, tekst gray-800 */
+  --color-bg-from: #f3e8ff; /* purple-100 */
+  --color-bg-to: #fce7f3; /* pink-100  */
+  --color-ink: #1f2937; /* gray-800  */
+
+  /* Akcenty różowe (skala pink z oryginału) */
+  --color-blush-50: #fdf2f8; /* pink-50  */
+  --color-blush-100: #fce7f3; /* pink-100 */
+  --color-blush-200: #fbcfe8; /* pink-200 */
+  --color-blush-300: #f9a8d4; /* pink-300 */
+  --color-blush-400: #f472b6; /* pink-400 */
+  --color-blush-500: #ec4899; /* pink-500 */
+  --color-blush-600: #db2777; /* pink-600 */
+  --color-blush-700: #be185d; /* pink-700 */
+  --color-blush-800: #9d174d; /* pink-800 */
+
+  /* Fiolet i odcienie specjalne z oryginału */
+  --color-orchid: #9333ea; /* purple-600 */
+  --color-mauve: #dbb5d6; /* #dbb5d6 (z RSVPForm) */
+  --color-plum: #140712; /* #140712 (countdown) */
+  --color-plum-soft: #121111; /* #121111 (countdown label) */
+
+  /* Miękkie tła pudrowe z oryginału */
+  --color-tint-1: #fffbfb;
+  --color-tint-2: #fff5f6;
+  --color-tint-3: #ffeef1;
+
+  /* Stany (zachowane z RSVPForm) */
+  --color-ok-bg: #e6ffe6;
+  --color-err-bg: #ffe6e6;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Oryginalne tło: bg-linear-65 from-purple-100 to-pink-100 text-gray-800 */
+  min-height: 100vh;
+  background: linear-gradient(
+    65deg,
+    var(--color-bg-from) 0%,
+    var(--color-bg-to) 100%
+  );
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtelny scrollbar w odcieniu marki */
+::selection {
+  background: var(--color-blush-200);
+  color: var(--color-plum);
+}
+
+/* Pomocnicze klasy nagłówków marki */
+.font-cinzel {
+  font-family: var(--font-cinzel);
+}
+.font-amsterdam {
+  font-family: var(--font-amsterdam);
 }

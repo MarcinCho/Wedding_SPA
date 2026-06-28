@@ -1,27 +1,29 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
+
+# Wrangler / Cloudflare
+.wrangler
+
+# Sekrety i lokalne zmienne — NIGDY do repo
+.dev.vars
+.env
+.env.*
 *.local
 
-# Editor directories and files
+# Edytory / system
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 
-# my files
-mynotes.md
+# Logi
+*.log
+npm-debug.log*
+
+# Sekrety lokalne (np. klucz Resend) — NIGDY do repo
+key.resend
+*.resend

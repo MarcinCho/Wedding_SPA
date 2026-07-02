@@ -4,8 +4,8 @@
 export const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB
 
 // Limity nadużyć (możliwe nadpisanie przez env w upload.js)
-export const PER_DEVICE_MAX_DEFAULT = 50; // plików na deviceId
-export const TOTAL_MAX_DEFAULT = 5000; // obiektów w bucketcie
+export const PER_DEVICE_MAX_DEFAULT = 500; // plików na deviceId (weselny gość może wrzucić dużo)
+export const TOTAL_MAX_DEFAULT = 20000; // obiektów w bucketcie
 
 // Bezpieczne, jawne typy serwowane (S-4). Brak application/octet-stream / "".
 export const SAFE_CONTENT_TYPE = {

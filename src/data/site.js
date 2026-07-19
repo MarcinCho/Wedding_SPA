@@ -72,7 +72,7 @@ export const about = {
   // Historia w sekcjach: każda ma opcjonalny tytuł, akapity i opcjonalne punkty.
   story: [
     {
-      title: "To był sylwester, którego żadne z nich miało nie zapomnieć.",
+      title: "Początek pierdzi Gąsek.",
       paragraphs: [
         "Marcin wrócił do Polski zaledwie kilka tygodni wcześniej, w grudniu 2023 roku, po spędzeniu aż 10 lat w chłodnej Norwegii. Wychowywał się wraz z dwiema starszymi siostrami, Ewą i Kasią, doskonale wiedział, jak radzić sobie w życiu, ale powrót do kraju i tak był dla niego rewolucją. Ola z kolei miała za sobą zupełnie inne doświadczenia – jako jedyna dziewczyna z pięciorga rodzeństwa, wychowana z czterema braćmi, miała twardy charakter i jasno określone zdanie na każdy temat. Na przykład na temat miast. Dla Oli absolutnym numerem jeden na świecie był Andrychów. I choć przez rok mieszkała w Gdańsku – który uważa za drugie najładniejsze miasto zaraz po jej ukochanym Andrychowie – to w październiku 2023 roku spakowała walizki i wróciła w rodzinne strony.",
         "I tak, w ostatni wieczór roku 2024, oboje wylądowali na imprezie sylwestrowej organizowanej przez ich wspólnych znajomych, Dawida i Dominikę.",
@@ -82,6 +82,7 @@ export const about = {
       title: "Pierwsze wrażenie i różowy gin",
       paragraphs: [
         "Ola zapamiętała wejście Marcina idealnie: facet wkroczył na imprezę z butelką różowego ginu w dłoni, co od razu przykuło jej uwagę. Szybko jednak okazało się, że Marcin ma też inną, nieco bardziej „kombinatorską” stronę. Podczas gry w Wygibajtusa bezczelnie oszukiwał, co wywołało falę śmiechu i rzuciło na niego oko wszystkich zebranych.",
+        "Marcin zapamiętał tę noc równie dobrze, choć z zupełnie innej perspektywy. Ola wydała mu się osobą uśmiechniętą, choć wcale nie nieśmiałą – od razu było widać, że nie brakuje jej charakteru. Wielkim zaskoczeniem było dla niego, gdy w pewnym momencie wieczoru zaczęła śpiewać. Nie obyło się też bez pierwszej przyjacielskiej sprzeczki: gdy Ola upierała się, że w Twistera – a jak kto woli, w Wygibajtusa – kontakt fizyczny jest niedozwolony, Marcin stanowczo się z nią nie zgadzał.",
         "Ale to nie wygibajtus ani różowy gin skradły serce Oli tej nocy. Nad ranem, gdy po noworocznym morsowaniu Ola trzęsła się z zimna, Marcin bez słowa poszedł do kuchni i zrobił dla niej ciepłą, idealną herbatę. To był mały gest, który zakorzenił się w jej pamięci głębiej, niż mogłoby się wydawać.",
       ],
     },

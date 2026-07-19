@@ -16,7 +16,11 @@ import SectionTitle from "../components/SectionTitle.vue";
           v-if="about.photo"
           class="mx-auto mb-6 h-48 w-48 overflow-hidden rounded-full border-4 border-[color:var(--color-blush-200)]"
         >
-          <img :src="about.photo" alt="Ola i Marcin" class="h-full w-full object-cover" />
+          <img
+            :src="about.photo"
+            alt="Ola i Marcin"
+            class="h-full w-full object-cover"
+          />
         </div>
         <div
           v-else
@@ -52,7 +56,7 @@ import SectionTitle from "../components/SectionTitle.vue";
         <p
           class="mt-8 text-center font-amsterdam text-3xl text-[color:var(--color-blush-700)]"
         >
-          {{ couple.bride }} &amp; {{ couple.groom }}
+          <!-- {{ couple.bride }} &amp; {{ couple.groom }} -->
         </p>
       </div>
     </div>

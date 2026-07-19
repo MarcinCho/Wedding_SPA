@@ -25,14 +25,28 @@ import SectionTitle from "../components/SectionTitle.vue";
           {{ couple.bride[0] }}&amp;{{ couple.groom[0] }}
         </div>
 
-        <div class="space-y-4 text-center sm:text-left">
-          <p
-            v-for="(p, i) in about.paragraphs"
-            :key="i"
-            class="text-base leading-relaxed text-[color:var(--color-ink)] opacity-90"
-          >
-            {{ p }}
-          </p>
+        <div class="space-y-8 text-left">
+          <div v-for="(sec, i) in about.story" :key="i" class="space-y-3">
+            <h3
+              v-if="sec.title"
+              class="font-cinzel text-lg sm:text-xl text-[color:var(--color-blush-700)]"
+            >
+              {{ sec.title }}
+            </h3>
+            <p
+              v-for="(p, j) in sec.paragraphs"
+              :key="j"
+              class="text-base leading-relaxed text-[color:var(--color-ink)]/90"
+            >
+              {{ p }}
+            </p>
+            <ul
+              v-if="sec.bullets && sec.bullets.length"
+              class="list-disc pl-6 space-y-1 text-base leading-relaxed text-[color:var(--color-ink)]/90"
+            >
+              <li v-for="(b, k) in sec.bullets" :key="k">{{ b }}</li>
+            </ul>
+          </div>
         </div>
 
         <p

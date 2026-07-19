@@ -61,7 +61,7 @@ export const dressCode = {
   text: "Elegancki / formalny",
   palette: [
     { name: "Fuksjowy", color: "#e72295" },
-    { name: "Butelkowa zieleń", color: "#134e36" }
+    { name: "Butelkowa zieleń", color: "#134e36" },
   ],
   note: "Panie prosimy o unikanie bieli oraz pudrowego różu.",
 };
@@ -72,9 +72,8 @@ export const about = {
   // Historia w sekcjach: każda ma opcjonalny tytuł, akapity i opcjonalne punkty.
   story: [
     {
-      title: "",
+      title: "To był sylwester, którego żadne z nich miało nie zapomnieć.",
       paragraphs: [
-        "To był sylwester, którego żadne z nich nie miało zapomnieć.",
         "Marcin wrócił do Polski zaledwie kilka tygodni wcześniej, w grudniu 2023 roku, po spędzeniu aż 10 lat w chłodnej Norwegii. Wychowywał się wraz z dwiema starszymi siostrami, Ewą i Kasią, doskonale wiedział, jak radzić sobie w życiu, ale powrót do kraju i tak był dla niego rewolucją. Ola z kolei miała za sobą zupełnie inne doświadczenia – jako jedyna dziewczyna z pięciorga rodzeństwa, wychowana z czterema braćmi, miała twardy charakter i jasno określone zdanie na każdy temat. Na przykład na temat miast. Dla Oli absolutnym numerem jeden na świecie był Andrychów. I choć przez rok mieszkała w Gdańsku – który uważa za drugie najładniejsze miasto zaraz po jej ukochanym Andrychowie – to w październiku 2023 roku spakowała walizki i wróciła w rodzinne strony.",
         "I tak, w ostatni wieczór roku 2024, oboje wylądowali na imprezie sylwestrowej organizowanej przez ich wspólnych znajomych, Dawida i Dominikę.",
       ],

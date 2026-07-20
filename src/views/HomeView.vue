@@ -55,8 +55,8 @@ function goAbout() {
         <button
           type="button"
           @click="goAbout"
-          class="font-cinzel text-sm px-6 py-3 rounded-full bg-[color:var(--color-blush-600)] text-white shadow-sm hover:bg-[color:var(--color-blush-700)] transition-colors"
-        >
+          class="font-cinzel text-sm px-6 py-3 rounded-full border border-[color:var(--color-blush-400)] text-[color:var(--color-blush-700)] hover:bg-[color:var(--color-blush-100)] transition-colors"
+          >
           O nas
         </button>
         <button

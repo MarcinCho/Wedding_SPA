@@ -52,7 +52,7 @@ function goRsvp() {
       </div>
 
       <!-- CTA -->
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      <!-- <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
         <button
           type="button"
           @click="goRsvp"
@@ -74,7 +74,7 @@ function goRsvp() {
         >
           Galeria gości
         </button>
-      </div>
+      </div> -->
 
       <p
         v-if="couple.hashtag"

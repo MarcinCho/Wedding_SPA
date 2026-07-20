@@ -10,9 +10,8 @@ function goGallery() {
 function goDetails() {
   window.location.hash = "#/co-i-gdzie";
 }
-function goRsvp() {
-  const el = document.getElementById("rsvp");
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+function goAbout() {
+  window.location.hash = "#/o-nas";
 }
 </script>
 
@@ -52,13 +51,13 @@ function goRsvp() {
       </div>
 
       <!-- CTA -->
-      <!-- <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
         <button
           type="button"
-          @click="goRsvp"
+          @click="goAbout"
           class="font-cinzel text-sm px-6 py-3 rounded-full bg-[color:var(--color-blush-600)] text-white shadow-sm hover:bg-[color:var(--color-blush-700)] transition-colors"
         >
-          Potwierdź obecność
+          O nas
         </button>
         <button
           type="button"
@@ -74,7 +73,7 @@ function goRsvp() {
         >
           Galeria gości
         </button>
-      </div> -->
+      </div>
 
       <p
         v-if="couple.hashtag"

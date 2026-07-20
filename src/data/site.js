@@ -62,6 +62,11 @@ export const dressCode = {
   palette: [
     { name: "Fuksjowy", color: "#e72295" },
     { name: "Butelkowa zieleń", color: "#134e36" },
+    {
+      name: "Kolorowy",
+      color:
+        "conic-gradient(from 0deg, #ff3b3b, #ff9f1c, #ffd60a, #37d67a, #2ea6ff, #8a5cff, #ff3b3b)",
+    },
   ],
   note: "Panie prosimy o unikanie bieli oraz pudrowego różu.",
 };

@@ -95,7 +95,7 @@ function mapSrc(query) {
           >
             <span
               class="h-10 w-10 rounded-full border border-black/10 shadow-inner"
-              :style="{ backgroundColor: c.color }"
+              :style="{ background: c.color }"
             ></span>
             <span class="mt-1 text-xs opacity-70">{{ c.name }}</span>
           </div>

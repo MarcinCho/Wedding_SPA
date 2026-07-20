@@ -29,7 +29,7 @@ import SectionTitle from "../components/SectionTitle.vue";
           {{ couple.bride[0] }}&amp;{{ couple.groom[0] }}
         </div>
 
-        <div class="space-y-8 text-left">
+        <div class="space-y-8 text-center">
           <div v-for="(sec, i) in about.story" :key="i" class="space-y-3">
             <h3
               v-if="sec.title"
